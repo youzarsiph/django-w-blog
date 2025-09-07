@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     "blog.api",  # Optional if you do not want to use the API
     "blog.apps.articles",
     "blog.apps.categories",
-    "blog.apps.home",
+    "blog.apps.home",  # Optional if you have a home app with a Home model ('home.Home')
     "blog.apps.indexes",
     "blog.apps.tags",
     "blog.cms",
