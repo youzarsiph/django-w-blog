@@ -1,4 +1,7 @@
-{% extends 'blog/base.html' %}{% load i18n blog wagtailimages_tags %}
+{% extends 'blog/base.html' %}
+
+<!---->
+{% load i18n wagtailcore_tags wagtailimages_tags %}
 
 <!---->
 {% block title %} {{ block.super }} | {{ article.get_parent }} | {{ article }}
@@ -50,7 +53,7 @@
   {% include 'blog/components/breadcrumbs.html' %}
 
   <div
-    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
+    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-img:rounded-box prose-img:w-full"
   >
     <figure class="skeleton overflow-clip">
       {% image article.image fill-1920x1080 %}
@@ -131,7 +134,7 @@
 <!---->
 {% block drawer_content %}
 <li>
-  <a href="{% page_url article.get_parent LANGUAGE_CODE %}">
+  <a href="{% pageurl article.get_parent LANGUAGE_CODE %}">
     <i data-lucide="arrow-left" class="size-4 md:size-6 rtl:rotate-180"></i>
     {{ article.get_parent.title }}
   </a>

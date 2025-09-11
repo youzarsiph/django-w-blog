@@ -7,8 +7,10 @@ from wagtail.api import APIField
 from wagtail.models import Page
 from wagtail.search import index
 
+from blog.apps.mixins import ChildPaginatorMixin
 
-class AbstractBlogCategory(Page):
+
+class AbstractBlogCategory(ChildPaginatorMixin, Page):
     """Abstract model for extension"""
 
     description = models.CharField(
@@ -29,6 +31,9 @@ class AbstractBlogCategory(Page):
         """Meta data"""
 
         abstract = True
+
+    def get_ordered_children(self):
+        return super().get_children().order_by("-latest_revision_created_at")
 
 
 class BlogCategory(AbstractBlogCategory):

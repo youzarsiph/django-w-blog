@@ -7,6 +7,7 @@ from wagtail.fields import StreamField
 from wagtail.models import Page
 from wagtail.search import index
 
+from blog.apps.articles.models import BlogArticle
 from blog.cms.blocks import MediaBlock
 
 
@@ -32,6 +33,20 @@ class AbstractBlogIndex(Page):
         """Meta data"""
 
         abstract = True
+
+    def get_context(self, request, *args, **kwargs):
+        """Add latest articles to context"""
+
+        context = super().get_context(request, *args, **kwargs)
+
+        return {
+            **context,
+            "articles": self.get_descendants()
+            .type(BlogArticle)
+            .live()
+            .order_by("-latest_revision_created_at")
+            .specific(),
+        }
 
 
 class BlogIndex(AbstractBlogIndex):

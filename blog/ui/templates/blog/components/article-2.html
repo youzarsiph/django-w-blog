@@ -1,10 +1,10 @@
-{% load i18n blog wagtailimages_tags %}
+{% load i18n wagtailcore_tags wagtailimages_tags %}
 
 <li
   role="article"
-  class="relative card bg-base-300 hover:bg-base-200 card-sm md:card-md xl:card-lg 2xl:card-xl lg:first:col-span-3 lg:nth-[3]:col-span-3 lg:nth-[2]:col-span-6 lg:nth-[2]:row-span-6 xl:nth-[2]:col-span-6 xl:nth-[2]:row-span-4 col-span-12 row-span-12 size-full shadow-sm md:col-span-6 md:row-span-6 lg:col-span-4 lg:row-span-4 2xl:col-span-3 2xl:row-span-3"
+  class="relative card bg-base-100 hover:bg-base-200 card-sm md:card-md xl:card-lg 2xl:card-xl lg:first:col-span-3 lg:nth-[3]:col-span-3 lg:nth-[2]:col-span-6 lg:nth-[2]:row-span-6 xl:nth-[2]:col-span-6 xl:nth-[2]:row-span-4 col-span-12 row-span-12 size-full shadow md:col-span-6 md:row-span-6 lg:col-span-4 lg:row-span-4 2xl:col-span-3 2xl:row-span-3"
 >
-  <a href="{% page_url article LANGUAGE_CODE %}" class="absolute inset-0">
+  <a href="{% pageurl article %}" class="absolute inset-0 z-10">
     <span class="sr-only">{% trans 'Read' %}</span>
   </a>
 
@@ -15,14 +15,9 @@
   <div class="card-body p-4 justify-end">
     <h2 class="card-title text-primary">{{ article.title }}</h2>
 
-    <p
-      data-order="{{ forloop.counter }}"
-      class="hidden grow-0 [data-order=2]:block"
-    >
-      {{ article.headline }}
-    </p>
+    <p class="grow-0">{{ article.headline }}</p>
 
-    <div class="card-actions items-center gap-1">
+    <div class="card-actions items-center gap-1 z-20">
       <div
         class="tooltip tooltip-primary"
         data-tip="{% trans 'Date published' %}"
@@ -33,7 +28,7 @@
       </div>
 
       <a
-        href="{% page_url article.get_parent LANGUAGE_CODE %}"
+        href="{% pageurl article.get_parent %}"
         class="tooltip tooltip-primary"
         data-tip="{% trans 'Category' %}"
       >

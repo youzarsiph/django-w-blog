@@ -13,35 +13,54 @@
 
 ## Overview
 
-A reusable blog app powered by Python, Django, DRF, Wagtail CMS, TailwindCSS and DaisyUI.
+A reusable, production-ready blog application built with Python, Django, Django REST Framework, and Wagtail CMS, styled with Tailwind CSS and daisyUI. It ships with sane defaults, modern theming, and clean APIs to help you launch quickly and scale confidently.
 
-## Get started
+---
 
-Install the package:
+## Key features
+
+- **Full CMS:** Wagtail-powered editorial experience with pages, media, search, and governance.
+- **Modern UI:** Tailwind CSS for utility-first styling and responsive layouts.
+- **Theming:** All daisyUI themes supported, plus the ability to define custom themes.
+- **API ready:** Optional REST API endpoints for content delivery and integrations.
+- **CI/CD:** GitHub Actions pipelines for consistent, automated testing and deployment.
+- **Dependencies:** Managed with Poetry for reproducibility and clarity.
+- **Formatting:** Black for automatic, consistent code formatting.
+- **Linting:** Ruff for fast, comprehensive linting.
+- **Testing:** Django test runner for unit and integration tests.
+- **Configs included:** `.gitignore`, `pyproject.toml`, and other boilerplate to streamline setup.
+
+---
+
+## Installation
 
 ```console
 pip install django-w-blog
 ```
 
-Configure your `Django` settings:
+---
+
+## Configuration
+
+### Add installed apps
 
 ```python
 # project/settings.py
 
-# Application definition
 INSTALLED_APPS = [
     "blog",
-    "blog.api",  # Optional if you do not want to use the API
+    "blog.api",  # Optional if you don't need the API
     "blog.apps.articles",
     "blog.apps.categories",
-    "blog.apps.home",  # Optional if you have a home app with a Home model ('home.Home')
+    "blog.apps.home",      # Optional if your project includes a Home model ('home.Home')
     "blog.apps.indexes",
     "blog.apps.tags",
     "blog.cms",
     "blog.ui",
-    # Deps
-    "rest_wind",  # Optional if you do not want to use the API
-    "rest_framework",  # Optional if you do not want to use the API
+
+    # Dependencies
+    "rest_wind",           # Optional if you don't need the API
+    "rest_framework",      # Optional if you don't need the API
     "wagtail.contrib.search_promotions",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -56,18 +75,18 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
-    ...
+    # ...
 ]
 ```
 
-Run the migrations:
+### Run migrations
 
 ```console
 # In your project root
-python mange.py migrate
+python manage.py migrate
 ```
 
-Update your `URLConf`:
+### Update URL configuration
 
 ```python
 # project/urls.py
@@ -77,35 +96,92 @@ from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
-
 urlpatterns = [
     path("", include("blog.ui.urls")),
-    path("api/", include("blog.api.urls")),  # Optional if you do not want to use the API
-    path("api/", include("rest_framework.urls")),  # Optional if you do not want to use the API
-    ...
+    path("api/", include("blog.api.urls")),           # Optional if you don't need the API
+    path("api/", include("rest_framework.urls")),     # Optional if you don't need the API
+    # ...
     path("documents/", include(wagtaildocs_urls)),
     path("dashboard/", include(wagtailadmin_urls)),
-    path("", include(wagtail_urls)),  # Make sure this line is the last
+    path("", include(wagtail_urls)),                  # Keep this as the last pattern
 ]
 ```
 
-## Key Features
+---
 
-- **CI/CD Pipelines**: Automated using GitHub Actions to ensure consistent and reliable deployment processes.
-- **Dependency Management**: Powered by Poetry, a sophisticated tool for managing project dependencies with precision and reliability.
-- **Code Formatting**: Automatically formatted with Black to maintain a consistent and readable codebase.
-- **Code Linting**: Utilizes Ruff to identify and address potential issues early, enhancing code quality and maintainability.
-- **Code Testing**: Utilizes Django to run tests.
-- **Configuration Files**: Includes `.gitignore`, `pyproject.toml`, and other essential configuration files to streamline setup.
+## Theming and templates
+
+Each template in django-w-blog extends `docs/base.html`. Start by creating this base template in your project and customize it to match your brand.
+
+### Create the docs template directory
+
+```console
+mkdir -p your_app/templates/docs
+```
+
+### Create the base template
+
+```console
+touch your_app/templates/docs/base.html
+```
+
+You can extend `docs/base.html` in your own templates or override any provided template for full control.
+
+### Available blocks and context
+
+- **`docs/base.html`**
+  - **Blocks:**
+    - **theme:** Default daisyUI theme
+    - **toggle_theme:** Secondary daisyUI theme
+    - **head:** HTML head content
+    - **title:** Page title
+    - **styles:** CSS styles links
+    - **navbar:** Navigation bar
+    - **branding:** Branding in navbar
+    - **navbar_center:** Centered navbar links
+    - **navbar_end:** Right-aligned navbar links
+    - **content:** Main content
+    - **footer:** Page footer
+    - **drawer_branding:** Sidebar branding
+    - **drawer_content:** Sidebar content
+  - **Context:**
+    - **home:** Site root page
+
+- **`docs/index.html`**
+  - **Blocks:** All blocks from `docs/base.html`
+  - **Context:**
+    - **index:** Blog index page
+    - **articles:** Latest blog articles
+
+- **`docs/category.html`**
+  - **Blocks:** All blocks from `docs/base.html`
+  - **Context:**
+    - **category:** Category instance
+
+- **`docs/article.html`**
+  - **Blocks:** All blocks from `docs/base.html`
+  - **Context:**
+    - **article:** Article instance
+
+- **`docs/search.html`**
+  - **Blocks:** All blocks from `docs/base.html`
+  - **Context:**
+    - **search_results:** Results as a `PageQuerySet`
+
+---
 
 ## Contributing
 
-We warmly welcome contributions from the community. Please refer to our [CONTRIBUTING](CONTRIBUTING.md) guide for detailed instructions on how to contribute effectively. Your feedback and participation are essential for the continued improvement of this template.
+We welcome contributions. Please review the [CONTRIBUTING](CONTRIBUTING.md) guide for setup, coding standards, and workflow. Opening an issue before major changes helps align on scope and direction.
+
+---
 
 ## Support
 
-For inquiries or support, please open an issue or join the discussion in the [GitHub Discussions](https://github.com/youzarsiph/django-w-blog/discussions) section to engage with the community.
+For questions, bug reports, or feature requests, open an issue or start a thread in [GitHub Discussions](https://github.com/youzarsiph/django-w-blog/discussions).
 
-## Licensing
+---
 
-This project is licensed under the MIT License. A detailed copy of the terms can be found in the [LICENSE](LICENSE) file.
+## License
+
+This project is available under the MIT License. See the [LICENSE](LICENSE) file for details.
