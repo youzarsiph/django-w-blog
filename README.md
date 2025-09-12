@@ -111,25 +111,25 @@ urlpatterns = [
 
 ## Theming and templates
 
-Each template in django-w-blog extends `docs/base.html`. Start by creating this base template in your project and customize it to match your brand.
+Each template in django-w-blog extends `blog/base.html`. Start by creating this base template in your project and customize it to match your brand.
 
-### Create the docs template directory
+### Create the blog template directory
 
 ```console
-mkdir -p your_app/templates/docs
+mkdir -p your_app/templates/blog
 ```
 
 ### Create the base template
 
 ```console
-touch your_app/templates/docs/base.html
+touch your_app/templates/blog/base.html
 ```
 
-You can extend `docs/base.html` in your own templates or override any provided template for full control.
+You can extend `blog/base.html` in your own templates or override any provided template for full control.
 
 ### Available blocks and context
 
-- **`docs/base.html`**
+- **`blog/base.html`**
   - **Blocks:**
     - **theme:** Default daisyUI theme
     - **toggle_theme:** Secondary daisyUI theme
@@ -147,24 +147,24 @@ You can extend `docs/base.html` in your own templates or override any provided t
   - **Context:**
     - **home:** Site root page
 
-- **`docs/index.html`**
-  - **Blocks:** All blocks from `docs/base.html`
+- **`blog/index.html`**
+  - **Blocks:** All blocks from `blog/base.html`
   - **Context:**
     - **index:** Blog index page
     - **articles:** Latest blog articles
 
-- **`docs/category.html`**
-  - **Blocks:** All blocks from `docs/base.html`
+- **`blog/category.html`**
+  - **Blocks:** All blocks from `blog/base.html`
   - **Context:**
     - **category:** Category instance
 
-- **`docs/article.html`**
-  - **Blocks:** All blocks from `docs/base.html`
+- **`blog/article.html`**
+  - **Blocks:** All blocks from `blog/base.html`
   - **Context:**
     - **article:** Article instance
 
-- **`docs/search.html`**
-  - **Blocks:** All blocks from `docs/base.html`
+- **`blog/search.html`**
+  - **Blocks:** All blocks from `blog/base.html`
   - **Context:**
     - **search_results:** Results as a `PageQuerySet`
 
