@@ -55,9 +55,7 @@
   <div
     class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-img:rounded-box prose-img:w-full"
   >
-    <figure class="skeleton overflow-clip">
-      {% image article.image fill-1920x1080 %}
-    </figure>
+    <figure>{% image article.image fill-1920x1080 %}</figure>
 
     <div class="not-prose mb-8">
       <div class="flex items-center gap-2">
@@ -100,7 +98,7 @@
 
     <h1>{{ article.title }}</h1>
 
-    <p class="lead">{{ article.description }}</p>
+    <p class="lead">{{ article.headline }}</p>
 
     {{ article.content }}
   </div>

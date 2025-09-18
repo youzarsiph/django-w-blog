@@ -10,7 +10,7 @@ from wagtail.models import Page
 from wagtail.search import index
 from wagtail.images import get_image_model
 
-from blog.cms.blocks import MediaBlock
+from blog.cms.blocks import AllBlocks
 
 
 Image = get_image_model()
@@ -33,7 +33,7 @@ class AbstractBlogArticle(Page):
         help_text=_("Article headline"),
     )
     content = StreamField(
-        MediaBlock(),
+        AllBlocks(),
         verbose_name=_("content"),
         help_text=_("Article content"),
     )

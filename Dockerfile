@@ -15,7 +15,7 @@ RUN pip install -r requirements.txt
 
 # Create new Django project and configure the settings
 RUN django-admin startproject core
-RUN cp -r blog core
+RUN cp -r ./blog ./core
 
 # Configure settings
 RUN echo "INSTALLED_APPS += [" >> core/settings.py
@@ -28,6 +28,7 @@ RUN echo "    'blog.apps.indexes'," >> core/settings.py
 RUN echo "    'blog.apps.tags'," >> core/settings.py
 RUN echo "    'blog.cms'," >> core/settings.py
 RUN echo "    'blog.ui'," >> core/settings.py
+RUN echo "    'wagtail_blocks'," >> core/settings.py
 RUN echo "    'rest_wind'," >> core/settings.py
 RUN echo "    'rest_framework'," >> core/settings.py
 RUN echo "    'wagtail.contrib.search_promotions'," >> core/settings.py

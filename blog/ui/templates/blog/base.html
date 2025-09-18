@@ -16,10 +16,21 @@
     <!---->
     {% block styles %}
     <link
+      href="{% static 'wagtail_blocks/css/styles.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
       href="{% static 'blog/css/styles.css' %}"
       rel="stylesheet"
       type="text/css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
     <style>
       figure > img {
         height: 100%;
@@ -54,7 +65,7 @@
                 <header
                   class="absolute inset-x-0 top-0 z-40 px-2 backdrop-blur-3xl lg:px-4"
                 >
-                  <nav class="navbar">
+                  <nav class="navbar p-4">
                     <ol class="navbar-start gap-4">
                       <li
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10"
@@ -378,6 +389,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
       lucide.createIcons();
+      hljs.highlightAll();
+      const btns = new ClipboardJS(".btn-copy");
     </script>
   </body>
 </html>
