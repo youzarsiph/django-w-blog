@@ -17,6 +17,12 @@ A reusable, production-ready blog application built with Python, Django, Django 
 
 ---
 
+## Demo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NiBgi7huGbY?si=MEUZzjAGSGzgs3JZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
 ## Key features
 
 - **Full CMS:** Wagtail-powered editorial experience with pages, media, search, and governance.
@@ -61,6 +67,7 @@ INSTALLED_APPS = [
     # Dependencies
     "rest_wind",           # Optional if you don't need the API
     "rest_framework",      # Optional if you don't need the API
+    "wagtail_blocks",
     "wagtail.contrib.search_promotions",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
