@@ -11,10 +11,12 @@
       <span class="sr-only">{% trans 'Read' %}</span>
     </a>
 
-    <figure>{% image article.image fill-1920x1080 %}</figure>
+    <figure class="skeleton overflow-clip">
+      {% image article.image fill-1920x1080 %}
+    </figure>
 
     <div
-      class="card-body p-4 justify-between bg-gradient-to-t from-primary dark:from-base-100 to-transparent to-75%"
+      class="card-body p-4 justify-between bg-gradient-to-t from-neutral-900 to-transparent"
     >
       <div class="card-actions px-2 items-center gap-1 z-20">
         <a
@@ -38,15 +40,9 @@
       </div>
 
       <div class="grid gap-4">
-        <h2
-          class="card-title text-primary-content text-shadow-lg dark:text-primary"
-        >
-          {{ article.title }}
-        </h2>
+        <h2 class="card-title text-shadow-lg">{{ article.title }}</h2>
 
-        <p class="grow-0 text-primary-content text-shadow-lg dark:text-primary">
-          {{ article.headline }}
-        </p>
+        <p class="grow-0 text-shadow-lg">{{ article.headline }}</p>
       </div>
     </div>
   </div>

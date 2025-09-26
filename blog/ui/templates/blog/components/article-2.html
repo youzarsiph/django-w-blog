@@ -8,10 +8,12 @@
     <span class="sr-only">{% trans 'Read' %}</span>
   </a>
 
-  <figure>{% image article.image fill-1920x1080 %}</figure>
+  <figure class="skeleton overflow-clip">
+    {% image article.image fill-1920x1080 %}
+  </figure>
 
   <div class="card-body p-4 justify-end">
-    <h2 class="card-title text-primary">{{ article.title }}</h2>
+    <h2 class="card-title">{{ article.title }}</h2>
 
     <p class="grow-0">{{ article.headline }}</p>
 
