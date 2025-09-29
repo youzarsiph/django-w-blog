@@ -11,4 +11,4 @@ register = template.Library()
 def get_site_root(context):
     """Get site root"""
 
-    return Site.find_for_request(context["request"]).root_page
+    return Site.find_for_request(context["request"]).root_page.localized
