@@ -4,7 +4,6 @@ from django.utils.translation import gettext_lazy as _
 from wagtail import blocks
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.images.blocks import ImageBlock
 from wagtail_blocks import blocks as wagtail_blocks
 
 
@@ -20,7 +19,7 @@ class MediaBlock(TextBlock):
     """Custom StreamBlock for Text and Media content"""
 
     video = EmbedBlock(help_text=_("Video"))
-    image = ImageBlock(help_text=_("Image"))
+    image = wagtail_blocks.ImageBlock(help_text=_("Image"))
     document = DocumentChooserBlock(help_text=_("Document"))
 
 
@@ -33,6 +32,7 @@ class AllBlocks(MediaBlock):
     carousel = wagtail_blocks.CarouselBlock(help_text=_("Carousel"))
     diff = wagtail_blocks.DiffBlock(help_text=_("Diff"))
     fab = wagtail_blocks.FABBlock(help_text=_("FAB"))
+    hover_gallery = wagtail_blocks.HoverGalleryBlock(help_text=_("Hover gallery"))
     list = wagtail_blocks.ListBlock(help_text=_("List"))
     tabs = wagtail_blocks.TabsBlock(help_text=_("Tabs"))
     steps = wagtail_blocks.StepsBlock(help_text=_("Steps"))
@@ -41,3 +41,4 @@ class AllBlocks(MediaBlock):
     browser = wagtail_blocks.BrowserMockupBlock(help_text=_("Browser mockup"))
     code_mockup = wagtail_blocks.CodeMockupBlock(help_text=_("Code mockup"))
     phone = wagtail_blocks.PhoneMockupBlock(help_text=_("Phone mockup"))
+    window = wagtail_blocks.WindowMockupBlock(help_text=_("Window mockup"))
